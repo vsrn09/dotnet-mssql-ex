@@ -1,33 +1,57 @@
 ﻿@page
 @model RazorPagesContacts.Pages.IndexModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Sample .Net Application</title>
+    
+    <asp:Literal ID="ltTable" runat="server" />
 
-<h1>Contacts</h1>
-<form method="post">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var contact in Model.Customers)
-            {
+</head>
+<body >
+    <style type='text/css'>
+        body {
+            text-align: right;
+            background-color: #144073;
+        }
+
+        h1 {
+            text-align: center;
+            color :white;
+            background-color: #389BD6;
+        }
+    </style>
+    <h1>Contacts</h1>
+    <div style="float: right">
+        <img src="Images/va-og-image.png" style="height: 168px; width: 352px;" />
+    </div>
+    <form method="post">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@contact.Id</td>
-                    <td>@contact.Name</td>
-                    <td>@contact.Email</td>
-                    <td>@contact.PhoneNumber</td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@contact.Id">edit</a>
-                        <button type="submit" asp-page-handler="delete" 
-                                asp-route-id="@contact.Id">delete</button>
-                    </td>
+                    <th>ID</th>
+                    <th>Name</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var contact in Model.Customers)
+                {
+                    <tr>
+                        <td>@contact.Id</td>
+                        <td>@contact.Name</td>
+                        <td>@contact.Email</td>
+                        <td>@contact.PhoneNumber</td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@contact.Id">edit</a>
+                            <button type="submit" asp-page-handler="delete" 
+                                    asp-route-id="@contact.Id">delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-    <a asp-page="./Create">Create</a>
-</form>
+        <a asp-page="./Create">Create</a>
+    </form>
+</body>
+</html>
